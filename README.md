@@ -213,18 +213,27 @@ const explosionSound = new Audio('/sounds/explosion.mp3');
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Add your `API_KEY` environment variable
-3. Deploy automatically on push
+### Quick Deploy to Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/shadow-flight-crash-game)
 
-### Netlify
-1. Build the project: `npm run build`
-2. Upload the `dist` folder to Netlify
-3. Configure environment variables
+### Environment Variables Required
+- `API_KEY`: Your Google Gemini API key (get one at [Google AI Studio](https://makersuite.google.com/app/apikey))
 
-### Other Platforms
-The built files in `dist/` can be deployed to any static hosting service.
+### Supported Platforms
+- **Vercel** (Recommended) - Automatic deployments with GitHub integration
+- **Netlify** - Easy drag-and-drop deployment
+- **GitHub Pages** - Free hosting with GitHub Actions
+- **Firebase Hosting** - Google's hosting platform
+- **Any Static Host** - The built `dist/` folder works anywhere
+
+### Deployment Steps
+1. **Set Environment Variables**: Add your `API_KEY` in your hosting platform
+2. **Build Settings**: 
+   - Build command: `npm run build`
+   - Output directory: `dist`
+3. **Deploy**: Push to your repository or upload the `dist` folder
+
+📖 **For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)**
 
 ## 🤝 Contributing
 
