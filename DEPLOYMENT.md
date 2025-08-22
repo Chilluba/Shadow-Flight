@@ -5,14 +5,14 @@ This guide will help you deploy your Shadow Flight Crash Game to various hosting
 ## 📋 Prerequisites
 
 Before deploying, ensure you have:
-- A Google Gemini API key (get one at [Google AI Studio](https://makersuite.google.com/app/apikey))
 - Node.js 18+ installed locally (for testing)
 - Git repository with your code
+- **Optional**: A Google Gemini API key for AI-generated flight logs (get one at [Google AI Studio](https://makersuite.google.com/app/apikey))
 
-## 🔧 Environment Variables
+## 🔧 Environment Variables (Optional)
 
-Your application requires the following environment variable:
-- `API_KEY` or `GEMINI_API_KEY`: Your Google Gemini API key
+The game works perfectly without any environment variables using pre-written flight messages. For AI-generated flight logs, you can optionally set:
+- `VITE_API_KEY`: Your Google Gemini API key
 
 ## 🌐 Deployment Options
 
@@ -32,8 +32,8 @@ Your application requires the following environment variable:
    - Go to [Vercel Dashboard](https://vercel.com/dashboard)
    - Click "New Project"
    - Import your GitHub repository
-   - Configure environment variables:
-     - Add `API_KEY` with your Gemini API key value
+   - **Optional**: Configure environment variables:
+     - Add `VITE_API_KEY` with your Gemini API key value (for AI-generated flight logs)
 
 3. **Deploy from CLI** (if you have Vercel CLI):
    ```bash
@@ -44,7 +44,7 @@ Your application requires the following environment variable:
 The project includes a `vercel.json` file with optimized settings:
 - SPA routing support
 - Asset caching
-- Environment variable mapping
+- No environment variables required (API key is optional)
 
 ### Option 2: Netlify
 

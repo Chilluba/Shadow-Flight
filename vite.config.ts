@@ -10,9 +10,8 @@ export default defineConfig(({ mode }) => {
       jsxRuntime: 'automatic'
     })],
     define: {
-      // Keep these for backward compatibility, but use VITE_ prefixed env vars
-      'process.env.API_KEY': JSON.stringify(env.VITE_API_KEY || env.VITE_GEMINI_API_KEY),
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.VITE_API_KEY || env.VITE_GEMINI_API_KEY)
+      // Environment variables for production build
+      'process.env.NODE_ENV': JSON.stringify(mode)
     },
     resolve: {
       alias: {

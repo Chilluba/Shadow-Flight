@@ -64,10 +64,10 @@ Shadow Flight is an adrenaline-pumping crash game where players:
    npm install
    ```
 
-3. **Set up environment variables**
-   Create a `.env` file in the root directory:
+3. **Set up environment variables (Optional)**
+   The game works without an API key using fallback messages. For AI-generated flight logs, create a `.env` file:
    ```env
-   API_KEY=your_google_gemini_api_key
+   VITE_API_KEY=your_google_gemini_api_key
    ```
 
 4. **Start the development server**
@@ -216,8 +216,9 @@ const explosionSound = new Audio('/sounds/explosion.mp3');
 ### Quick Deploy to Vercel
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/shadow-flight-crash-game)
 
-### Environment Variables Required
-- `API_KEY`: Your Google Gemini API key (get one at [Google AI Studio](https://makersuite.google.com/app/apikey))
+### Environment Variables (Optional)
+- `VITE_API_KEY`: Your Google Gemini API key for AI-generated flight logs (get one at [Google AI Studio](https://makersuite.google.com/app/apikey))
+- The game works perfectly without an API key using pre-written flight messages
 
 ### Supported Platforms
 - **Vercel** (Recommended) - Automatic deployments with GitHub integration
@@ -227,11 +228,16 @@ const explosionSound = new Audio('/sounds/explosion.mp3');
 - **Any Static Host** - The built `dist/` folder works anywhere
 
 ### Deployment Steps
-1. **Set Environment Variables**: Add your `API_KEY` in your hosting platform
+1. **Environment Variables (Optional)**: Add `VITE_API_KEY` in your hosting platform for AI-generated flight logs
 2. **Build Settings**: 
    - Build command: `npm run build`
    - Output directory: `dist`
 3. **Deploy**: Push to your repository or upload the `dist` folder
+
+### Vercel Deployment Instructions
+1. Connect your GitHub repository to Vercel
+2. **Optional**: Add environment variable `VITE_API_KEY` with your Google Gemini API key
+3. Deploy - no additional configuration needed!
 
 📖 **For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)**
 
