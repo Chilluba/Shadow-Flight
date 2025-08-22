@@ -58,7 +58,7 @@ The project includes a `vercel.json` file with optimized settings:
 
 2. **Environment Variables**:
    - Go to Site Settings > Environment Variables
-   - Add `API_KEY` with your Gemini API key
+   - Add `VITE_API_KEY` with your Gemini API key
 
 3. **Redirects** (create `public/_redirects` file):
    ```
@@ -87,7 +87,7 @@ The project includes a `vercel.json` file with optimized settings:
          - run: npm ci
          - run: npm run build
            env:
-             API_KEY: ${{ secrets.API_KEY }}
+             VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
          - uses: peaceiris/actions-gh-pages@v3
            with:
              github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -96,7 +96,7 @@ The project includes a `vercel.json` file with optimized settings:
 
 2. **Add API Key Secret**:
    - Go to Repository Settings > Secrets and Variables > Actions
-   - Add `API_KEY` secret with your Gemini API key
+   - Add `VITE_API_KEY` secret with your Gemini API key
 
 ### Option 4: Firebase Hosting
 
@@ -142,7 +142,7 @@ The project includes a `vercel.json` file with optimized settings:
    - Ensure all dependencies are installed
 
 2. **API Key Issues**:
-   - Verify the environment variable name matches (`API_KEY`)
+   - Verify the environment variable name matches (`VITE_API_KEY`)
    - Check that the API key is valid and has proper permissions
    - Ensure the key is properly set in your hosting platform
 
