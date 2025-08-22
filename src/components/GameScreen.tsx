@@ -82,7 +82,7 @@ const GameScreen: React.FC<GameScreenProps> = (props) => {
         return (
           <div className="text-center relative">
             {isCrashed && <div className="text-2xl md:text-3xl font-bold text-red-500 absolute -top-10 left-1/2 -translate-x-1/2 w-full">CRASHED!</div>}
-            <div className={`text-6xl md:text-8xl font-bold transition-colors duration-300 ${multiplierColor} drop-shadow-[0_0_15px_rgba(100,200,255,0.5)]`}>
+            <div className={`text-6xl md:text-8xl font-bold transition-colors duration-300 will-change-contents ${multiplierColor} drop-shadow-[0_0_15px_rgba(100,200,255,0.5)]`}>
               {multiplier.toFixed(2)}x
             </div>
             {isSafeZone && isRunning && (
@@ -99,7 +99,7 @@ const GameScreen: React.FC<GameScreenProps> = (props) => {
   };
 
   return (
-    <div className={`relative w-full aspect-video bg-black bg-opacity-30 rounded-xl overflow-hidden shadow-2xl border border-indigo-500/30 transition-all duration-300 ${isWarning ? 'warning-glow' : ''}`}>
+    <div className={`relative w-full aspect-video bg-black bg-opacity-30 rounded-xl overflow-hidden shadow-2xl border border-indigo-500/30 transition-all duration-300 touch-manipulation ${isWarning ? 'warning-glow' : ''}`}>
         <style>{`
           .grid-background {
             background-image:
@@ -127,16 +127,35 @@ const GameScreen: React.FC<GameScreenProps> = (props) => {
         {!isPreGame && (
           <>
             {/* Main Plane */}
-            <div className="absolute h-8 w-8 md:h-12 md:w-12 transition-all" style={{ left: `calc(${planeY}% - 1rem)`, bottom: `${planeY}%`, transitionDuration: `${GAME_LOOP_INTERVAL_MS}ms`, transitionTimingFunction: 'linear' }}>
+            <div 
+              className="absolute h-8 w-8 md:h-12 md:w-12 will-change-transform" 
+              style={{ 
+                left: `calc(${planeY}% - 1rem)`, 
+                bottom: `${planeY}%`,
+                transform: 'translateZ(0)', // Force hardware acceleration
+                transition: isRunning ? 'none' : 'all 0.3s ease-out'
+              }}
+            >
               {isCrashed ? (
-                <div className="relative w-full h-full"><ExplosionIcon className="w-full h-full text-orange-500 animate-ping opacity-75" /><ExplosionIcon className="absolute top-0 left-0 w-full h-full text-yellow-400" /></div>
+                <div className="relative w-full h-full">
+                  <ExplosionIcon className="w-full h-full text-orange-500 animate-ping opacity-75" />
+                  <ExplosionIcon className="absolute top-0 left-0 w-full h-full text-yellow-400" />
+                </div>
               ) : (
-                <PlaneIcon className={`w-full h-full ${isSafeZone ? 'text-green-400 drop-shadow-[0_0_8px_rgba(50,255,150,0.8)]' : 'text-cyan-300 drop-shadow-[0_0_8px_rgba(100,200,255,0.8)]'}`} />
+                <PlaneIcon className={`w-full h-full transition-colors duration-300 ${isSafeZone ? 'text-green-400 drop-shadow-[0_0_8px_rgba(50,255,150,0.8)]' : 'text-cyan-300 drop-shadow-[0_0_8px_rgba(100,200,255,0.8)]'}`} />
               )}
             </div>
             {/* Shadow Plane */}
              {!isCrashed && (
-                <div className="absolute h-8 w-8 md:h-12 md-w-12 transition-all" style={{ left: `calc(${shadowY}% - 1rem)`, bottom: `${shadowY}%`, transitionDuration: `${GAME_LOOP_INTERVAL_MS}ms`, transitionTimingFunction: 'linear' }}>
+                <div 
+                  className="absolute h-8 w-8 md:h-12 md:w-12 will-change-transform" 
+                  style={{ 
+                    left: `calc(${shadowY}% - 1rem)`, 
+                    bottom: `${shadowY}%`,
+                    transform: 'translateZ(0)', // Force hardware acceleration
+                    transition: isRunning ? 'none' : 'all 0.3s ease-out'
+                  }}
+                >
                     <PlaneIcon className="w-full h-full text-red-500 opacity-70 drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]" />
                 </div>
              )}
